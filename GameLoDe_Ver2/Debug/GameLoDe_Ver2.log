@@ -1,0 +1,5 @@
+﻿  GameLoDe_Ver2.cpp
+D:\Lop C, C++\Buoi20\GameLoDe_Ver2\GameLoDe_Ver2\QuaySo.h(8,12): warning C4584: 'QuaySo': base-class 'GhiDe' is already a base-class of 'GhiLo'
+D:\Lop C, C++\Buoi20\GameLoDe_Ver2\GameLoDe_Ver2\GhiDe.h(7): message : see declaration of 'GhiDe'
+D:\Lop C, C++\Buoi20\GameLoDe_Ver2\GameLoDe_Ver2\GhiLo.h(3): message : see declaration of 'GhiLo'
+  GameLoDe_Ver2.vcxproj -> D:\Lop C, C++\Buoi20\GameLoDe_Ver2\Debug\GameLoDe_Ver2.exe
