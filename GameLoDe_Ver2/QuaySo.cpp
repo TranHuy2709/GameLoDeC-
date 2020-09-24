@@ -64,10 +64,10 @@ void QuaySo::gotoXY(int x, int y)
 }
 void QuaySo::controCho()
 {
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 5; i++)
 	{
-		cout << "_";
-		Sleep(500);
+		cout << ".";
+		Sleep(400);
 	}
 }
 
@@ -118,20 +118,6 @@ void QuaySo::hienThiKetQua()
 	cout << setw(14) << giaiBay[1] << endl; controCho(); gotoXY(39, 26);
 	cout << setw(14) << giaiBay[2] << endl; controCho(); gotoXY(54, 26);
 	cout << setw(14) << giaiBay[3] << endl;
-
-	cout << "Giai DB" << setw(38) << giaiDacBiet << endl;
-	cout << "Giai Nhat" << setw(36) << giaiNhat << endl;
-	cout << "Giai Nhi" << setw(20) << giaiNhi[0] << setw(35) << giaiNhi[1] << endl;
-	cout << "Giai Ba" << setw(16) << giaiBa[0] << setw(9) << giaiBa[1]
-		<< setw(9) << giaiBa[2] << setw(9) << giaiBa[3]
-		<< setw(9) << giaiBa[4] << setw(9) << giaiBa[5] << endl;
-	cout << "Giai Tu" << setw(17) << giaiTu[0] << setw(14) << giaiTu[1] << setw(14) << giaiTu[2] << setw(14) << giaiTu[3] << endl;
-	cout << "Giai Nam" << setw(14) << giaiNam[0] << setw(9) << giaiNam[1]
-		<< setw(9) << giaiNam[2] << setw(9) << giaiNam[3]
-		<< setw(9) << giaiNam[4] << setw(9) << giaiNam[5] << endl;
-	cout << "Giai Sau" << setw(20) << giaiSau[0] << setw(15) << giaiSau[1] << setw(15) << giaiSau[2] << endl;
-	cout << "Giai Bay" << setw(17) << giaiBay[0] << setw(14) << giaiBay[1] << setw(14) << giaiBay[2] << setw(14) << giaiBay[3] << endl;
-
 }
 int QuaySo::laySoDuoi(int a)
 {
@@ -194,4 +180,117 @@ void QuaySo::laySoDuoiKetQua(int lotoDuoi[])
 			break;
 		}
 	}
+}
+void QuaySo::tachSoTuString(int a[], string str)
+{
+	string so;
+	int chiSo = 0;
+	int i = 0;
+	while (i < str.length())
+	{
+		so = "";
+		for (i; i < str.length(); i++)
+		{
+			if (str[i+1] == ' ')
+			{
+				i=i+2;
+				break;
+			}
+			so += str[i];
+		}
+		ketQuaMotLanQuay[chiSo] = stoi(so);
+		chiSo++;
+	}
+}
+
+void QuaySo::soXuatHienNhieuNhat()
+{
+	fstream a("KetQuaNamLanQuayGanNhat.txt");
+	string dong;
+	int chiSo2=0;
+	if(a.is_open())
+	{
+		while(!a.eof())
+		{
+			getline(a, dong);
+			for (int i = 0; i < 100; i++)
+			{
+				ketQuaMotLanQuay[i] = 0;
+			}
+			tachSoTuString(ketQuaMotLanQuay, dong);
+			for (int i = 0; i < 100; i++)
+			{
+				tanSoXuatHien[chiSo2][i]=ketQuaMotLanQuay[i];
+			}
+			chiSo2++;
+		}
+	}
+	a.close();
+	for (int i = 0; i < 100; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			thongKeSoLan[1][i] += tanSoXuatHien[j][i];
+		}
+	}
+	for (int i = 0; i < 100; i++)
+	{
+		thongKeSoLan[0][i] = i;
+	}
+	for (int i = 0; i < 99; i++)
+	{
+		for (int j = i + 1; j < 100; j++)
+		{
+			if (thongKeSoLan[1][i] < thongKeSoLan[1][j])
+			{
+				int temp = thongKeSoLan[1][j];
+				thongKeSoLan[1][j] = thongKeSoLan[1][i];
+				thongKeSoLan[1][i] = temp;
+				temp = thongKeSoLan[0][j];
+				thongKeSoLan[0][j]= thongKeSoLan[0][i];
+				thongKeSoLan[0][i] = temp;
+			}
+		}
+	}
+	cout << "10 so xuat hien nhieu nhat trong 5 lan quay gan day." << endl;
+	for (int i = 0; i < 10; i++)
+	{
+
+		cout << setw(10) << thongKeSoLan[0][i] << setw(10) << thongKeSoLan[1][i]<<endl;
+	}
+}
+void QuaySo::ghiLaiTanSoXuatHien()
+{
+	for (int i = 3; i >=0; i--)
+	{
+		for (int j = 0; j < 100; j++)
+		{
+			tanSoXuatHien[i+1][j] = tanSoXuatHien[i][j];
+		}
+	}
+	for (int i = 0; i < 100; i++) 
+	{
+		ketQuaMotLanQuay[i] = 0;
+	}
+	for (int i = 0; i < 27; i++)
+	{
+		ketQuaMotLanQuay[lotoDuoi[i]]++;
+	}
+	for (int i = 0; i < 100; i++)
+	{
+		tanSoXuatHien[0][i] = ketQuaMotLanQuay[i];
+	}
+	string ts;
+	fstream a("KetQuaNamLanQuayGanNhat.txt",ios::out);
+	for (int i = 0; i < 5; i++)
+	{
+		ts = "";
+		for (int j = 0; j < 100; j++)
+		{
+			ts += to_string(tanSoXuatHien[i][j]);
+			ts += ' ';
+		}
+		a << ts << endl;
+	}
+	a.close();
 }

@@ -30,8 +30,9 @@ void ghi()
 		cout << "bam 2 neu muon ghi lo." << endl;
 	}
 	cout << "Bam 3 de nap them tien." << endl;
+	cout << "Bam 4 de xem 10 so xuat hien nhieu nhat trong 5 lan quay gan day.";
 	cin >> a;
-	while (a != '1' && a != '2' && a != '3')
+	while (a != '1' && a != '2' && a != '3' &&a!='4')
 	{
 		cout << "Nhap sai. Nhap lai:";
 		cin >> a;
@@ -57,6 +58,10 @@ void ghi()
 	if (a == '3')
 	{
 		dn.napTien();
+	}
+	if (a == '4')
+	{
+		qs.soXuatHienNhieuNhat();
 	}
 	if (ktraGhiDe == true || ktraGhiLo == true)
 	{
@@ -169,6 +174,7 @@ int main()
 			hienThiKetQua();
 			dn.tienVonHienCo = dn.tienVonHienCo - tienGhiDe - tienGhiLo + tienThangDe + tienThangLo;
 			dn.luuThongTinSauVongChoi(dn.tienVonHienCo);
+			qs.ghiLaiTanSoXuatHien();
 		}
 		cout << "Nhap (Y) neu muon choi tiep" << endl;
 		cin >> ktraChoiTiep;

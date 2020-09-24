@@ -1,5 +1,11 @@
-﻿  GameLoDe_Ver2.cpp
-D:\Lop C, C++\Buoi20\github\GameLoDeC-\GameLoDe_Ver2\QuaySo.h(9,12): warning C4584: 'QuaySo': base-class 'GhiDe' is already a base-class of 'GhiLo'
+﻿  QuaySo.cpp
+D:\Lop C, C++\Buoi20\github\GameLoDeC-\GameLoDe_Ver2\QuaySo.h(10,12): warning C4584: 'QuaySo': base-class 'GhiDe' is already a base-class of 'GhiLo'
 D:\Lop C, C++\Buoi20\github\GameLoDeC-\GameLoDe_Ver2\GhiDe.h(7): message : see declaration of 'GhiDe'
 D:\Lop C, C++\Buoi20\github\GameLoDeC-\GameLoDe_Ver2\GhiLo.h(3): message : see declaration of 'GhiLo'
+D:\Lop C, C++\Buoi20\github\GameLoDeC-\GameLoDe_Ver2\QuaySo.cpp(6,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\Lop C, C++\Buoi20\github\GameLoDeC-\GameLoDe_Ver2\QuaySo.cpp(62,14): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+D:\Lop C, C++\Buoi20\github\GameLoDeC-\GameLoDe_Ver2\QuaySo.cpp(62,16): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+D:\Lop C, C++\Buoi20\github\GameLoDeC-\GameLoDe_Ver2\QuaySo.cpp(130,30): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+D:\Lop C, C++\Buoi20\github\GameLoDeC-\GameLoDe_Ver2\QuaySo.cpp(189,11): warning C4018: '<': signed/unsigned mismatch
+D:\Lop C, C++\Buoi20\github\GameLoDeC-\GameLoDe_Ver2\QuaySo.cpp(192,13): warning C4018: '<': signed/unsigned mismatch
   GameLoDe_Ver2.vcxproj -> D:\Lop C, C++\Buoi20\github\GameLoDeC-\Debug\GameLoDe_Ver2.exe

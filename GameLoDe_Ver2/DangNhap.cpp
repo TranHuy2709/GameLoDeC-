@@ -60,7 +60,7 @@ void DangNhap::hienThiThongTinNguoiChoi()
 void DangNhap::luuThongTinSauVongChoi(int a)
 {
 	string tenFile;
-	tenFile = tenDangNhap + ".txt";
+	tenFile = "ThongTinNguoiChoi\\"+ tenDangNhap + ".txt";
 	fstream b(tenFile, ios::out);
 	b << to_string(a);
 	b.close();
