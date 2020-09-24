@@ -4,12 +4,15 @@
 #include "GhiDe.h"
 #include "GhiLo.h"
 #include "QuaySo.h"
+#include "DangNhap.h"
+
 QuaySo qs;
-GhiDe gd,*t;
+GhiDe gd, * t;
 GhiLo gl;
-int tienVon = 1000000;
-int tienGhiDe=0;
-int tienGhiLo=0;
+DangNhap dn;
+
+int tienGhiDe = 0;
+int tienGhiLo = 0;
 int tienThangDe = 0;
 int tienThangLo = 0;
 
@@ -17,7 +20,7 @@ void ghi()
 {
 	char a;
 	bool ktraGhiDe = true, ktraGhiLo = true;
-GHI:
+	GHI:
 	if (ktraGhiDe == true)
 	{
 		cout << "Bam 1 neu muon ghi de." << endl;
@@ -26,12 +29,13 @@ GHI:
 	{
 		cout << "bam 2 neu muon ghi lo." << endl;
 	}
+	cout << "Bam 3 de nap them tien." << endl;
 	cin >> a;
-	while (a != '1' && a != '2')
+	while (a != '1' && a != '2' && a != '3')
 	{
 		cout << "Nhap sai. Nhap lai:";
 		cin >> a;
-	}
+	}	
 	if (a == '1' && ktraGhiDe == true)
 	{
 		gd.ghi();
@@ -50,6 +54,10 @@ GHI:
 		}
 		ktraGhiLo = false;
 	}
+	if (a == '3')
+	{
+		dn.napTien();
+	}
 	if (ktraGhiDe == true || ktraGhiLo == true)
 	{
 		cout << "Ban co muon ghi tiep khong? Bam (Y) de ghi tiep.";
@@ -65,9 +73,9 @@ void hienThiTicket()
 {
 	cout << "--------------------------------------------------------------------" << endl;
 	cout << "Thong tin ticket:" << endl;
-    gd.hienThi();
-    t = &gl;
-    t->hienThi();
+	gd.hienThi();
+	t = &gl;
+	t->hienThi();
 }
 void hienThiKetQuaQuaySo()
 {
@@ -83,7 +91,7 @@ void soSanhKetQua()
 		if (gd.soDe[i] == qs.lotoDuoi[0])
 		{
 			tienThangDe += (gd.tienDe[i] * 70);
-			cout << gd.soDe[i] ;
+			cout << gd.soDe[i];
 		}
 	}
 	cout << endl;
@@ -111,12 +119,12 @@ void hienThiKetQua()
 }
 void taoMoiTicket()
 {
-    for (int i = 0; i < 5; i++)
-    {
-        gd.tienDe[i] = 0;
-        gd.soDe[i] = NULL;
-    }
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 5; i++)
+	{
+		gd.tienDe[i] = 0;
+		gd.soDe[i] = NULL;
+	}
+	for (int i = 0; i <5; i++)
 	{
 		gl.diemLo[i] = 0;
 		gl.soLo[i] = NULL;
@@ -129,27 +137,22 @@ void taoMoiTicket()
 
 int main()
 {
-    string von;
-    char ktraChoiTiep;
-    do
-    {   
+	dn.timTenNguoiChoi();
+	char ktraChoiTiep = ' ';
+	do
+	{
+		ktraChoiTiep = ' ';
 		BAT_DAU_CHOI:
-        ktraChoiTiep=' ';
-		taoMoiTicket();
-		von = gd.hienThiTienGhi(tienVon);
-		cout << "Chao mung ban den voi Xo so Mien Bac. Mo thuong bat cu luc nao ban ghi." << endl;
-		cout << "---------------------------------------------------------------------" << endl;
-		cout << "So tien von cua ban: " << von << endl;
-		cout << "Hay chon con so may man cho minh."<<endl;
-        ghi();
-		if (tienGhiDe + tienGhiLo - tienVon > 0)
+		dn.hienThiThongTinNguoiChoi();
+		ghi();
+		if (dn.tienVonHienCo - tienGhiDe - tienGhiLo < 0)
 		{
-			cout << "Ban khong du tien ghi. Bam (Y) de ghi lai.";
-			char ghiLai;
-			cin >> ghiLai;
-			if (ghiLai == 'y' || ghiLai == 'Y')
+			cout << "Ban khong du tien ghi. ";
+			cout << "Bam (Y) de ghi lai.";
+			char a;
+			cin >> a;
+			if (a == 'y' || a == 'Y')
 			{
-				system("cls");
 				goto BAT_DAU_CHOI;
 			}
 			else
@@ -158,24 +161,26 @@ int main()
 			}
 		}
 		else
-		{	
+		{
+			system("cls");
 			hienThiTicket();
 			hienThiKetQuaQuaySo();
 			soSanhKetQua();
 			hienThiKetQua();
-			tienVon = tienVon - tienGhiDe - tienGhiLo+tienThangDe+tienThangLo;
+			dn.tienVonHienCo = dn.tienVonHienCo - tienGhiDe - tienGhiLo + tienThangDe + tienThangLo;
+			dn.luuThongTinSauVongChoi(dn.tienVonHienCo);
 		}
-        cout << "Nhap (Y) neu muon choi tiep" << endl;
-        cin >> ktraChoiTiep;
-        if (ktraChoiTiep == 'y' || ktraChoiTiep == 'Y')
-        {
-            system("cls");
-			goto BAT_DAU_CHOI;
-        }
-        else
-        {
-            break;
-        }
-    } while (ktraChoiTiep == 'y' || ktraChoiTiep == 'Y');
+		cout << "Nhap (Y) neu muon choi tiep" << endl;
+		cin >> ktraChoiTiep;
+		if (ktraChoiTiep == 'y' || ktraChoiTiep == 'Y')
+		{
+			cin.ignore();
+			system("cls");
+		}
+		else
+		{
+			break;
+		}
+	} while (ktraChoiTiep == 'y' || ktraChoiTiep == 'Y');
 
 }

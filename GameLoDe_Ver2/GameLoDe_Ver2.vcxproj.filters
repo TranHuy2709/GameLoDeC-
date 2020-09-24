@@ -27,6 +27,9 @@
     <ClCompile Include="QuaySo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DangNhap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GhiDe.h">
@@ -36,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="QuaySo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DangNhap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

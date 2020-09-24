@@ -3,6 +3,7 @@
 #include "GhiLo.h"
 #include "stdlib.h"
 #include "time.h"
+#include "windows.h"
 
 class QuaySo :
     public GhiDe,public GhiLo
@@ -14,11 +15,13 @@ class QuaySo :
 	int giaiTu[4];
 	int giaiNam[6];
 	int giaiSau[3];
-	int giaiBay[4];	
+	int giaiBay[4];
 	int laySoDuoi(int a);
+	void gotoXY(int x, int y);
+	void controCho();
 public:
 	int lotoDuoi[27];
-    void quayKetQua();
+	void quayKetQua();
 	void laySoDuoiKetQua(int a[]);
 	void hienThiKetQua();
 	int tienGhiDe = 0;

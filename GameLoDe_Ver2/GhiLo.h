@@ -4,8 +4,8 @@ class GhiLo :
     public GhiDe
 { 
 public:
-    int soLo[10];
-    int diemLo[10];
+    int soLo[5];
+    int diemLo[5];
     int soluongLo;
     void ghi();
     void hienThi();

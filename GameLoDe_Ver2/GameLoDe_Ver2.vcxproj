@@ -139,12 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DangNhap.cpp" />
     <ClCompile Include="GameLoDe_Ver2.cpp" />
     <ClCompile Include="GhiDe.cpp" />
     <ClCompile Include="GhiLo.cpp" />
     <ClCompile Include="QuaySo.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DangNhap.h" />
     <ClInclude Include="GhiDe.h" />
     <ClInclude Include="GhiLo.h" />
     <ClInclude Include="QuaySo.h" />

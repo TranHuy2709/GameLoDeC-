@@ -56,7 +56,7 @@ void GhiDe::hienThi()
 {
 	cout << "------------------------------------------------" << endl;
 	cout << "   So De       ||      Tien De" << endl;
-	for (int i = 0; i < soluongDe; i++)
+	for (int i = 0; i < 5; i++)
 	{
 		string tien="";
 		tien = hienThiTienGhi(tienDe[i]);
